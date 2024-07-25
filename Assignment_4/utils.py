@@ -136,7 +136,7 @@ def save_activations(clip_name, target_name, target_layers, d_probe,
                      concept_set, batch_size, device, pool_mode, save_dir):
     
     print("Loading CLIP and preprocess model")
-    
+
     
     clip_model, clip_preprocess = clip.load(clip_name, device=device)
     print("Loading Target and preprocess model")

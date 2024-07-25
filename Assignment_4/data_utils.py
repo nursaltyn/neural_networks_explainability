@@ -5,6 +5,7 @@ from torchvision import datasets, transforms, models
 from torchvision.models import resnet18, ResNet18_Weights
 from datasets import load_dataset
 from PIL import Image
+from torchvision.models import resnet50, ResNet50_Weights
 
 
 DATASET_ROOTS = {"imagenet_val": "YOUR_PATH/ImageNet_val/",
@@ -78,22 +79,26 @@ def get_target_model(target_name, device):
         preprocess = get_resnet_imagenet_preprocess()
     elif target_name == 'resnet18_imagenet':
         # Load a pre-trained ResNet-18 model with weights trained on the ImageNet dataset
-        # model = resnet18(weights=ResNet18_Weights.IMAGENET1K_V1)
-        target_name = 'ResNet18'
-        weights = eval("models.{}_Weights.IMAGENET1K_V1".format(target_name))
+        weights = models.ResNet18_Weights.IMAGENET1K_V1
         preprocess = weights.transforms()
-        target_model = eval("models.{}(weights=weights).to(device)".format(target_name))
+        target_model = models.resnet18(weights=weights).to(device)
+        
+    elif target_name == 'resnet50_imagenet':
+        weights = models.ResNet50_Weights.IMAGENET1K_V2
+        preprocess = weights.transforms()
+        target_model = models.resnet50(weights=weights).to(device)
+
 
     # elif "vit_b" in target_name:
     #     target_name_cap = target_name.replace("vit_b", "ViT_B")
     #     weights = eval("models.{}_Weights.IMAGENET1K_V1".format(target_name_cap))
     #     preprocess = weights.transforms()
     #     target_model = eval("models.{}(weights=weights).to(device)".format(target_name))
-    elif "resnet" in target_name:
-        target_name_cap = target_name.replace("resnet", "ResNet")
-        weights = eval("models.{}_Weights.IMAGENET1K_V1".format(target_name_cap))
-        preprocess = weights.transforms()
-        target_model = eval("models.{}(weights=weights).to(device)".format(target_name))
+    # elif "resnet" in target_name:
+    #     target_name_cap = target_name.replace("resnet", "ResNet")
+    #     weights = eval("models.{}_Weights.IMAGENET1K_V1".format(target_name_cap))
+    #     preprocess = weights.transforms()
+    #     target_model = eval("models.{}(weights=weights).to(device)".format(target_name))
     
     target_model.eval()
     return target_model, preprocess
@@ -113,7 +118,7 @@ def get_data(dataset_name, preprocess=None):
     elif dataset_name == 'imagenet':
         # data = load_dataset("imagenet-1k")
         # data = data["test"]
-        folder_path = '/Users/nursulusagimbayeva/Downloads/TrustworthyML-24/Assignment_4/imagenet'
+        folder_path = '/Users/nursulusagimbayeva/Downloads/TrustworthyML-24/neural_networks_explainability/Assignment_4/imagenet'
         data = load_images_from_folder(folder_path)
 
     elif dataset_name == "cifar100_val":
