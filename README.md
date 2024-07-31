@@ -10,7 +10,7 @@ The analysis is located in clip_notebook.ipynb.
 
 ### • LIME
 
-We use the tutorial from [https://github.com/marcotcr/lime/blob/master/doc/notebooks/Tutorial%20-%20images%20-%20 Pytorch.ipynb.]
+We use the tutorial from https://github.com/marcotcr/lime/blob/master/doc/notebooks/.
 
 The analysis is located in LIME/lime.ipynb.
 
