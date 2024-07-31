@@ -1,6 +1,6 @@
 # Neural Networks Explainability
 
-A class project on testing various explainability methods in Neural Networks.
+Testing various explainability methods in Neural Networks.
 
 ### • Network dissect
 
