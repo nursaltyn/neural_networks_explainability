@@ -1,0 +1,15 @@
+{
+  "clip_model": "ViT-B/16",
+  "target_model": "resnet18_places",
+  "target_layers": [
+    "layer4"
+  ],
+  "d_probe": "imagenet",
+  "concept_set": "data/20k.txt",
+  "batch_size": 200,
+  "device": "cpu",
+  "activation_dir": "saved_activations",
+  "result_dir": "results",
+  "pool_mode": "avg",
+  "similarity_fn": "soft_wpmi"
+}
