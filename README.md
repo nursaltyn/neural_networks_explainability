@@ -2,6 +2,8 @@
 
 Testing various explainability methods in Neural Networks.
 
+The report is accessible in report_compressed.pdf. 
+
 ### • Network dissect
 
 We utilized the code from https://github.com/Trustworthy-ML-Lab/CLIP-dissect and modified it to work on our dataset (ImageNet subsample) on the range of models we inspect.
